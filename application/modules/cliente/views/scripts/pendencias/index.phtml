@@ -1,0 +1,82 @@
+<?php echo $this->headScript()->appendFile($this->baseUrl('views/js/cliente/pendencias/index.js')); ?>
+<div class="panel panel-danger">
+    <div class="panel-heading">Lançamentos Pendentes</div>
+    <div class="panel-body">
+        <form method="post" />
+            <table class="table table-striped table-responsive">
+                <tr>
+                    <th class="col-lg-1">Data</th> 
+                    <th class="col-lg-1">Tipo</th> 
+                    <th class="col-lg-4">Descrição</th> 
+                    <th class="col-lg-3">Categoria</th> 
+                    <th class="col-lg-1 text-right">Valor</th> 
+                    <th class="col-lg-1 text-center">Status</th> 
+                    <th class="col-lg-1 text-center">Editar</th> 
+                    <th class="col-lg-1 text-center">Excluir</th> 
+                </tr>
+                <tr>
+                    <td colspan="8" class="text-right">
+                        <input type="checkbox" name="" value="" class="todos" id="todos" /><label for="todos">&nbsp;Marcar/Desmarcar todos </label>
+                    </td>
+                </tr>
+                <?php foreach ($this->pendencias as $pendencia) : ?>
+                <tr class="<?php echo View_Helper_Movimentacao::getClassRowMovimentacao($pendencia->id_tipo_movimentacao); ?>">
+                    <td class="col-lg-1"><?php echo View_Helper_Date::getDataView($pendencia->data_movimentacao); ?></td>
+                    <td class="col-lg-1"><?php echo $pendencia->tipo_movimentacao; ?></td>
+                    <td class="col-lg-4">
+                        <?php echo $pendencia->descricao_movimentacao; ?>
+                        <?php if ($pendencia->id_tipo_movimentacao == 3) : ?>
+                            <p class="small text-muted"><?php echo $pendencia->descricao_cartao; ?></p>
+                        <?php elseif ($pendencia->id_tipo_movimentacao == 4) : ?>
+                            <p class="small text-muted">De <?php echo $pendencia->descricao_conta; ?> para <?php echo $pendencia->descricao_conta_destino; ?></p>                
+                        <?php else : ?>
+                            <p class="small text-muted"><?php echo $pendencia->descricao_conta; ?></p>
+                        <?php endif; ?>
+                    </td>
+                    <td class="col-lg-3"><?php echo $pendencia->descricao_categoria; ?></td>
+                    <td class="col-lg-1 text-right"><?php echo View_Helper_Currency::getCurrency($pendencia->valor_movimentacao); ?></td>  
+                    <td class="col-lg-2 text-center">                
+                        <?php if ($pendencia->realizado) : ?>
+                            <a href="<?php echo $this->url(array(
+                                    'module' => 'cliente',
+                                    'controller' => 'movimentacoes',
+                                    'action' => 'status',
+                                    'id_movimentacao' => $pendencia->id_movimentacao,
+                                    'status' => $pendencia->realizado
+                                )); ?>">
+                                <img class="" src="<?php echo $this->baseUrl('views/img/icon_cool.png'); ?>" width="30" title="Realizado" />
+                            </a>
+                        <?php else : ?>
+                            <a href="<?php echo $this->url(array(
+                                    'module' => 'cliente',
+                                    'controller' => 'movimentacoes',
+                                    'action' => 'status',
+                                    'id_movimentacao' => $pendencia->id_movimentacao,
+                                    'status' => $pendencia->realizado
+                            )); ?>">
+                                <img class="" src="<?php echo $this->baseUrl('views/img/icon_bad.png'); ?>" width="30" title="Previsto" />
+                            </a>
+                        <?php endif; ?>
+                    </td>
+                    <td class="col-lg-1 text-center">
+                        <a href="<?php echo $this->url(array(
+                            'module' => 'cliente',
+                            'controller' => 'movimentacoes',
+                            'action' => 'editar-movimentacao',
+                            'id_movimentacao' => $pendencia->id_movimentacao
+                        )); ?>">
+                            <img class="margin-0px-5px" src="<?php echo $this->baseUrl('views/img/icon_edit.png'); ?>" width="20" title="Editar" />
+                        </a>                        
+                    </td>
+                    <td class="col-lg-1 text-center">
+                        <input type="checkbox" name="lancamentos_excluir[]" value="<?php echo $pendencia->id_movimentacao; ?>" class="pendencias" />                                 
+                    </td>
+                </tr>
+                <?php endforeach; ?>                                
+            </table>    
+            <input type="submit" name="submit" class="btn btn-sm btn-submit navbar-right" value="Excluir Selecionados" />
+        </form>
+    </div>
+</div>
+
+

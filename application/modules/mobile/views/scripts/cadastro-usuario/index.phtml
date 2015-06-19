@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h4 class="text-green">Faça Seu Cadastro</h4>
+        <?php echo View_Helper_Messages::render($this->messages); ?>
+    </div>
+    <!--
+    <div class="col-lg-6">
+        <div class="well background-color-white">            
+            <div role="tabpanel">
+                
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active" class="text-success" >
+                        <a class="text-success" href="#privacidade" aria-controls="home" role="tab" data-toggle="tab">Política de Privacidade</a>
+                    </li>              
+                </ul>
+               
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="privacidade">
+                        <div class="row">
+                            <div class="col-lg-12 text-orange text-right">
+                                <span class="col-lg-12 text-orange">Última atualização: <?php echo View_Helper_Date::getDataView(date("d/m/Y", strtotime("-7 days"))); ?></span>
+                                <hr />
+                            </div>                           
+                            <div class="col-lg-12 text-justify small" style="overflow: scroll; height: 662px;">
+                                <p>
+                                    Todas as suas informações pessoais recolhidas, serão usadas para o
+                                    ajudar a tornar a sua visita no nosso site o mais produtiva e 
+                                    agradável possível.
+                                </p>
+                                <p>
+                                    A garantia da confidencialidade dos dados pessoais dos utilizadores
+                                    do nosso site é importante para o NewFinances Controle de Finanças.
+                                </p>
+                                <p>
+                                    Todas as informações pessoais relativas a membros, assinantes, 
+                                    clientes ou visitantes que usem o NewFinances Controle de Finanças 
+                                    serão tratadas em concordância com a Lei da Proteção de Dados 
+                                    Pessoais de 26 de outubro de 1998 (Lei n.º 67/98).
+                                </p>
+                                <p>
+                                    A informação pessoal recolhida pode incluir o seu nome, e-mail, 
+                                    número de telefone e/ou celular, endereço, data de nascimento e/ou 
+                                    outros.
+                                </p>
+                                <p>
+                                    O uso do NewFinances Controle de Finanças pressupõe a aceitação deste
+                                    Acordo de privacidade. A equipa do NewFinances Controle de Finanças 
+                                    reserva-se ao direito de alterar este acordo sem aviso prévio. 
+                                    Deste modo, recomendamos que consulte a nossa política de 
+                                    privacidade com regularidade de forma a estar sempre atualizado.
+                                </p>
+                                <h4>Os anúncios</h4>
+                                <p>
+                                    Tal como outros websites, coletamos e utilizamos informação contida 
+                                    nos anúncios. A informação contida nos anúncios, inclui o 
+                                    seu endereço IP (Internet Protocol), o seu ISP (Internet Service 
+                                    Provider, como o Sapo, Clix, ou outro), o browser que utilizou ao 
+                                    visitar o nosso website (como o Internet Explorer ou o Firefox), 
+                                    o tempo da sua visita e que páginas visitou dentro do nosso website.
+                                </p>
+                                <h4>Os Cookies</h4>
+                                <p>
+                                    O Google, como fornecedor de terceiros, utiliza cookies para exibir 
+                                    anúncios no nosso website;
+                                </p>
+                                <p>
+                                    Com o cookie DART, o Google pode exibir anúncios com base nas 
+                                    visitas que o leitor fez a outros websites na Internet;
+                                </p>
+                                <p>
+                                    Os utilizadores podem desativar o cookie DART visitando a Política 
+                                    de privacidade da rede de conteúdo e dos anúncios do Google.
+                                </p>
+                                <p>
+                                    Utilizamos cookies para armazenar informação, tais como as suas 
+                                    preferências pessoas quando visita o nosso website. Isto poderá 
+                                    incluir um simples popup, ou uma ligação em vários serviços que 
+                                    providenciamos, tais como fóruns.
+                                </p>
+                                <p>
+                                    Em adição também utilizamos publicidade de terceiros no nosso 
+                                    website para suportar os custos de manutenção. Alguns destes 
+                                    publicitários, poderão utilizar tecnologias como os cookies e/ou 
+                                    web beacons quando publicitam no nosso website, o que fará com que 
+                                    esses publicitários (como o Google através do Google AdSense) 
+                                    também recebam a sua informação pessoal, como o endereço IP, o seu 
+                                    ISP, o seu browser, etc. Esta função é geralmente utilizada para 
+                                    geotargeting (mostrar publicidade de Lisboa apenas aos leitores 
+                                    oriundos de Lisboa por ex.) ou apresentar publicidade direcionada 
+                                    a um tipo de utilizador (como mostrar publicidade de restaurante 
+                                    a um utilizador que visita sites de culinária regularmente, por ex.).
+                                </p>
+                                <p>
+                                    Você detém o poder de desligar os seus cookies, nas opções do seu 
+                                    browser, ou efetuando alterações nas ferramentas de programas 
+                                    Anti-Virus, como o Norton Internet Security. No entanto, isso poderá
+                                    alterar a forma como interage com o nosso website, ou outros 
+                                    websites. Isso poderá afetar ou não permitir que faça logins em 
+                                    programas, sites ou fóruns da nossa e de outras redes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>            
+                </div>
+            </div>
+        </div>
+    </div>    
+    -->
+    <div class="col-lg-6 pull-right"> 
+        <div class="well background-color-white">
+            <p>
+                Para realizar seu cadastro preencha todos os campos abaixo. É prático,
+                rápido e <span class="text-success bold">gratuito.</span>
+            </p>
+            <p class="text-justify">        
+                Desde já a equipe <label class="text-blue">NewFinances</label> lhe dá as
+                boas vindas.
+            </p>
+            <?php echo $this->formSiteCadastro; ?>
+        </div>
+    </div>
+</div>

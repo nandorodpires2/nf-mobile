@@ -1,0 +1,266 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10/07/2014, 16:46:52
+    Author     : Fernando Rodrigues
+*/
+
+hr {
+    border-bottom: 2px solid #DCDCDC;
+}
+
+a {
+    color: #3071a9;
+}
+
+/* backgronds */
+.background-color-white {
+    background: #fff;
+}
+
+.background-color-black {
+    background: #000;
+}
+
+.background-color-gray {
+    background: #363636;
+}
+
+.background-color-snow {
+    background: #F5F5F5;
+}
+
+.background-color-orange {
+    background: #ec971f;
+}
+
+.background-color-blue {
+    background: #3071a9;
+}
+
+.background-color-green {
+    background: #4cae4c;
+}
+
+.bg-banner {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url(../img/bg-banner.png) left center repeat-y;    
+}
+
+/* paddings*/
+padding-5px {
+    padding: 5px;
+}
+
+.padding-10px {
+    padding: 10px;
+}
+
+.padding-10px-0 {
+    padding: 10px 0;
+}
+
+.padding-20px {
+    padding: 20px;
+}
+
+.padding-top-10px {
+    padding-top: 10px;
+}
+
+/* margins */
+.no-margim {
+    margin: 0;
+}
+
+.margin-5px {
+    margin: 5px;
+}
+
+.margin-10px {
+    margin: 10px;
+}
+
+.margin-top-10px {
+    margin-top: 10px;
+}
+
+.margin-10px-0px {
+    margin: 10px 0;
+}
+
+.margin-0px-5px {
+    margin: 0 5px;
+}
+
+.margin-left-neg-15px {
+    margin-left: 0px;
+}
+
+.margin-left-5px {
+    margin-left: 5px;
+}
+
+.margin-right-10px {
+    margin-right: 10px;
+}
+/* texts */
+.text-orange {
+    color: #ec971f;
+}
+
+.text-red {
+    color: #ac2925;
+}
+ 
+.text-blue {
+    color: #3071a9;
+}
+
+.text-green {
+    color: #4cae4c;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.large {
+    font-size: 20px;
+}
+
+/* list */
+ul.error {
+    list-style: none;
+}
+
+/* inputs */
+.btn-submit {
+    color: #fff;
+    background: #3071a9;    
+}
+
+.input-xsmall {
+    width: 30%;
+}
+
+.input-small {
+    width: 50%;
+}
+
+.input-large {
+    width: 100%;
+}
+
+.btn-submit:hover {
+    color: #fff;
+    background: #4cae4c;
+}
+/* borders */
+.border {
+    border: 3px solid #DCDCDC;
+}
+
+.border-top {
+    border-top: 1px solid;
+}
+
+.border-left {
+    border-left: 1px solid #dcdcdc;
+}
+
+.border-right {
+    border-right: 1px solid #dcdcdc;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.panel-bordered {
+    border-left: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.row-container-logo {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%; 
+}
+.logo {
+    position: absolute;
+    left: 20px;
+    top: 20px;    
+}
+
+.container-logo {
+    position: relative;
+}
+
+.img-banner {
+    width: 100%;
+    height: 200px;
+}
+
+.slider-text {
+    background: #FFFAFA;
+    color: #000;
+    opacity:0.65;
+    -moz-opacity: 0.65;
+    filter: alpha(opacity=65);
+}
+
+.direitos {
+    position: relative;
+    bottom: 0;
+}
+
+
+/* footer */
+footer a {
+    padding: 5px;
+}
+
+footer a.redes-sociais:hover {    
+    background: none;    
+}
+
+footer img.redes-sociais {
+    width: 35px;
+}
+
+footer a:hover {
+    color: #fff;
+    background: #4cae4c;    
+    text-decoration: none;
+    padding: 5px;
+}
+
+.footer li {
+    list-style: none;
+    margin-left: -30px;
+    padding: 5px 0;
+}
+
+footer .col-lg-4 {
+    padding-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+
+
+

@@ -1,0 +1,37 @@
+<div class="row">    
+    <div class="col-lg-12">    
+        <?php echo View_Helper_Messages::render($this->messages); ?>       
+        <div class="panel panel-danger">
+            <div class="panel-heading">Excluir Conta</div>
+            <div class="panel-body">
+                <h4>Dados da Conta</h4>                
+                <div class="row">
+                    <div class="col-md-1">Banco:</div>
+                    <div class="col-md-8"><?php echo $this->conta->nome_banco ? $this->conta->nome_banco : 'Nenhum'; ?></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">Descrição:</div>
+                    <div class="col-md-8"><?php echo $this->conta->descricao_conta; ?></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">Tipo:</div>
+                    <div class="col-md-8"><?php echo $this->conta->descricao_tipo_conta; ?></div>
+                </div>
+                <!--
+                <div class="row">
+                    <div class="col-md-1">Saldo Atual:</div>
+                    <div class="col-md-8"><?php ?></div>
+                </div>
+                -->
+                <hr />
+                <form method="post">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"><input class="btn btn-sm btn-danger" type="submit" name="btn-opt" value="Cancelar" /></div>
+                        <div class="col-md-1"><input class="btn btn-sm btn-success" type="submit" name="btn-opt" value="Confirmar" /></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-danger">
+            <div class="panel-heading">Excluir Cartão</div>
+            <div class="panel-body">
+                <h4>Dados Cartão</h4>
+                <div class="row">
+                    <div class="col-md-1">Bandeira</div>
+                    <div class="col-md-11"><?php echo $this->cartao->bandeira_cartao; ?></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">Descrição</div>
+                    <div class="col-md-11"><?php echo $this->cartao->descricao_cartao; ?></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">Limite</div>
+                    <div class="col-md-11"><?php echo View_Helper_Currency::getCurrency($this->cartao->limite_cartao); ?></div>
+                </div>
+                <hr />
+                <form method="post">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"><input class="btn btn-sm btn-danger" type="submit" name="btn-opt" value="Cancelar" /></div>
+                        <div class="col-md-1"><input class="btn btn-sm btn-success" type="submit" name="btn-opt" value="Confirmar" /></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

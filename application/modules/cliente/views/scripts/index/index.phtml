@@ -1,0 +1,318 @@
+
+
+<?php echo $this->headScript()->appendFile($this->baseUrl('views/js/cliente/index/index.js')); ?>
+<?php echo $this->headScript()->appendFile($this->baseUrl('views/js/layout.js')); ?>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-warning">
+            <span class="small">Página em construção</span>
+        </div>
+    </div>         
+</div>
+
+<!--
+<div class="row">       
+    <div class="col-lg-12">        
+        <?php echo View_Helper_Messages::render($this->messages, $this->alerts); ?>
+    
+        <div class="row">            
+                      
+        </div>
+    
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <span class="text-info">Lançamentos</span>
+                <?php if ($this->isConta) : ?>
+                <div class="pull-right">
+                    <a href="" data-toggle="modal" data-target="#modalSaldoContas" id="saldo-contas">
+                        <img class="margin-0px-5px" src="<?php echo $this->baseUrl('views/img/icon_balance.png'); ?>" width="20" title="Ver Saldo"/>
+                        <span class="text-info">Ver Saldo</span>
+                    </a>
+                    <a href="" data-toggle="modal" data-target="#modalGraficosLancamentos" id="chart-movimentacao">
+                        <img class="margin-0px-5px" src="<?php echo $this->baseUrl('views/img/icon_chart.png'); ?>" width="20" title="Visualizar Gráfico"/>
+                        <span class="text-info">Ver Gráfico Anual</span>
+                    </a>
+                </div>
+                <?php endif; ?>
+            </div>
+            <div class="panel-body">                
+                <div class="row">
+                    <div class="col-lg-3">    
+                        <div class="form-group">
+                            <div class="input-group">       
+                                <div class="input-group-addon">
+                                    <img src="<?php echo $this->baseUrl('views/img/icon_calendar.png'); ?>" />
+                                </div>
+                                <input class="form-control input-sm" placeholder="Ir para a data" type="text" name="data_movimentacao" id="data_movimentacao"/>                                
+                            </div>
+                        </div>                            
+                    </div>
+                    <!--
+                    <div class="col-lg-2" style="margin-top: 4px;">
+                         <a class="btn btn-xs btn-success" href="" data-toggle="modal" data-target="#modalTodosLancamentos" id="todos-lancamentos">Ver Todos os Lançamentos</a>
+                    </div>
+                    <div class="col-lg-1">&nbsp;</div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <div class="input-group"> 
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </div>
+                                <input class="form-control input-sm" placeholder="Pesquisar" type="text" name="data_movimentacao" id='pesquisar' />
+                                
+                            </div>
+                        </div>    
+                    </div>            
+                    <div class="col-lg-2" style="margin-top: 4px;">
+                        <a class="btn btn-xs btn-info" href="<?php echo $this->url(array(
+                            'module' => 'cliente',
+                            'controller' => 'pesquisas',
+                            'action' => 'avancada'
+                        ), null, true); ?>">Pesquisa Avançada</a>
+                    </div>            
+                    
+                </div>         
+                <hr style="border-color: #DCDCDC;" />
+                <div id="movimentacoes"></div>
+            </div>
+        </div>    
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-info">
+            <div class="panel-heading"><span class="text-blue">Cartões de Crédito</span></div>
+            <div class="panel-body">
+                <?php if ($this->faturas->count() > 0) : ?>                
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Cartão</th>
+                        <th>Vencimento</th>
+                        <th>Valor</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                    <?php foreach ($this->faturas as $key => $fatura) : ?>                    
+                    <tr>
+                        <td>
+                            <?php echo View_Helper_Cartoes::getBandeiraCartao($fatura->bandeira_cartao); ?>
+                            <?php echo $fatura->descricao_cartao; ?>
+                        </td>
+                        <td class="text-center"><?php echo View_Helper_Date::getDataView($fatura->vencimento_fatura); ?></td>
+                        <td class="text-right">
+                            <span class="<?php echo $fatura->valor_fatura > 0 ? 'text-success' : 'text-danger'; ?>">
+                                <?php echo View_Helper_Currency::getCurrency($fatura->valor_fatura); ?>
+                            </span>
+                        </td>          
+                        <td>
+                            <?php if (!View_Helper_Cartoes::fechadaFatura($fatura->fim_fatura)) : ?>
+                            <span>Em Aberto</span>
+                            <?php else : ?>
+                            <span>Fechado</span>
+                            <?php endif; ?>
+                        </td>
+                        <td class="col-sm-3 text-center">
+                            <a class="btn btn-xs btn-info" href="<?php echo $this->url(array(
+                                'module' => 'cliente',
+                                'controller' => 'cartoes',
+                                'action' => 'lancamentos',
+                                'fatura' => $fatura->vencimento_fatura,
+                                'cartao' => $fatura->id_cartao
+                            )); ?>">Ver Lançamentos</a>
+                            <?php if (View_Helper_Cartoes::fechadaFatura($fatura->fim_fatura)) : ?>
+                            <a class="btn btn-xs btn-success" href="<?php echo $this->url(array(
+                                'module' => 'cliente',
+                                'controller' => 'cartoes',
+                                'action' => 'pagar-fatura',
+                                'fatura' => $fatura->vencimento_fatura,
+                                'cartao' => $fatura->id_cartao
+                            )); ?>">Pagar Fatura</a>
+                            <?php endif; ?>
+                        </td>
+                    </tr>                    
+                    <?php endforeach; ?>                                
+                </table>
+                <?php else : ?>                
+                <div class="text-warning">Nenhum cartão de crédito cadastrado</div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-info">
+            <div class="panel-heading"><span class="text-blue">Categorias/Orçamento</span></div>
+            <div class="panel-body">
+                <?php if ($this->isConta) : ?>
+                <div class="col-lg-6" id="dados-categorias"></div>
+                <div class="col-lg-6" id="dados-orcamentos"></div>
+                <?php else : ?>
+                <div class="text-warning">Nenhum registro encontrado.</div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <span class="text-green">Próximas Receitas</span>
+                <span class="small">(Máx. 5 registros)</span>
+            </div>
+            <div class="panel-body">
+                <?php if ($this->receitas->count() > 0) : ?>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Data</th>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th>Ações</th>
+                        </tr>
+                        <?php foreach ($this->receitas as $receita) : ?>
+                        <tr class="text-green">
+                            <td><?php echo View_Helper_Date::getDataView($receita->data_movimentacao); ?></td>
+                            <td><?php echo $receita->descricao_movimentacao; ?></td>
+                            <td class="text-right"><?php echo View_Helper_Currency::getCurrency($receita->valor_movimentacao); ?></td>
+                            <td>
+                                <a href="<?php echo $this->url(array(
+                                    'module' => 'cliente',
+                                    'controller' => 'movimentacoes',
+                                    'action' => 'editar-movimentacao',
+                                    'id_movimentacao' => $receita->id_movimentacao
+                                ), null, true); ?>">
+                                    <img class="margin-0px-5px" src="<?php echo $this->baseUrl('views/img/icon_edit.png'); ?>" width="20" title="Editar" />
+                                </a>
+                                <a href="<?php echo $this->url(array(
+                                    'module' => 'cliente',
+                                    'controller' => 'movimentacoes',
+                                    'action' => 'excluir-movimentacao',
+                                    'id_movimentacao' => $receita->id_movimentacao
+                                ), null, true); ?>">
+                                    <img class="margin-0px-5px" src="<?php echo $this->baseUrl('views/img/icon_delete.png'); ?>" width="20" title="Excluir" />
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                <?php else : ?>
+                <div class="text-warning">Nenhum registro encontrado.</div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <span class="text-red">Próximas Despesas</span>
+                <span class="small">(Máx. 5 registros)</span>                
+            </div>
+            <div class="panel-body">
+                <?php if ($this->despesas->count() > 0) : ?>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Data</th>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th>Ações</th>
+                        </tr>
+                        <?php foreach ($this->despesas as $despesa) : ?>
+                        <tr class="text-red">
+                            <td><?php echo View_Helper_Date::getDataView($despesa->data_movimentacao); ?></td>
+                            <td><?php echo $despesa->descricao_movimentacao; ?></td>
+                            <td class="text-center"><?php echo View_Helper_Currency::getCurrency($despesa->valor_movimentacao); ?></td>
+                            <td>
+                                <a href="<?php echo $this->url(array(
+                                    'module' => 'cliente',
+                                    'controller' => 'movimentacoes',
+                                    'action' => 'editar-movimentacao',
+                                    'id_movimentacao' => $receita->id_movimentacao
+                                ), null, true); ?>">
+                                    <img class="margin-0px-5px" src="<?php echo $this->baseUrl('views/img/icon_edit.png'); ?>" width="20" title="Editar" />
+                                </a>
+                                <a href="<?php echo $this->url(array(
+                                    'module' => 'cliente',
+                                    'controller' => 'movimentacoes',
+                                    'action' => 'excluir-movimentacao',
+                                    'id_movimentacao' => $receita->id_movimentacao
+                                ), null, true); ?>">
+                                    <img class="margin-0px-5px" src="<?php echo $this->baseUrl('views/img/icon_delete.png'); ?>" width="20" title="Excluir" />
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                <?php else : ?>
+                <div class="text-warning">Nenhum registro encontrado.</div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+        
+    
+    <div class="modal fade" id="modalGraficosLancamentos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Gráfico Lançamentos</h4>
+                </div>
+                <div class="modal-body" id="grafico-receitas-despesas"></div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="modal" id="modalSaldoContas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h3 class="modal-title text-success" id="myModalLabel">Saldo</h3>
+                </div>
+                <div class="modal-body" id="saldo-contas">
+                    <table class="table table-striped table-responsive bold">
+                        <tr>
+                            <th class="text-blue">CONTA/TIPO</th>
+                            <th class="text-blue text-right">SALDO</th>
+                        </tr>
+                        <?php foreach ($this->saldos as $saldo) : ?>
+                        <tr>
+                            <td>
+                                <?php echo $saldo->descricao_conta; ?>
+                                <p class="small text-muted"><?php echo $saldo->descricao_tipo_conta; ?></p>
+                            </td>
+                            <td class="text-right <?php echo $saldo->saldo > 0 ? 'text-success' : 'text-danger'; ?>">
+                                <?php echo View_Helper_Currency::getCurrency($saldo->saldo); ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>                        
+                    </table>                    
+                </div>
+                <div class="modal-footer">
+                    <div class="col-lg-6 pull-right">
+                        <table class="table bold large">
+                            <tr>
+                                <td>TOTAL:</td>
+                                <td class="<?php echo $saldo->saldo > 0 ? 'text-success' : 'text-danger'; ?>">
+                                    <?php echo View_Helper_Currency::getCurrency($this->saldo_total); ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="modal fade" id="modalTodosLancamentos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Lançamentos</h4>
+                </div>
+                <div class="modal-body" id="lancamentos-modal"></div>
+            </div>
+        </div>
+    </div>    
+    
+</div>
+-->

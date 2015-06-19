@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <?php if ($this->message_type == 'error') : ?>
+            <div class="bg-danger text-danger padding-10px margin-top-10px">
+                <p>Olá <?php echo $this->nome; ?>,</p>
+                <p class="text-justify">
+                    <?php if ($this->message_code == 1062) : ?>
+                    Este e-mail já está cadastrado em nossa base de dados.
+                    <?php else : ?>
+                    Houve um problema ao cadastrar seus dados.
+                    <?php endif; ?>
+                </p>                
+            </div>
+        <?php elseif ($this->message_type == 'success') : ?>
+            <div class="bg-success text-success padding-10px margin-top-10px">
+                <p>Olá <?php echo $this->nome; ?>,</p>
+                <p class="text-justify">
+                    seu e-mail foi cadastrado com sucesso. Em breve você receberá 
+                    notícias a respeito de promoções e informações financeiras.
+                </p>        
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

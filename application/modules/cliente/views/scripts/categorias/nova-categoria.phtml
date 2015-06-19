@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-lg-12">        
+        <?php echo View_Helper_Messages::render($this->messages, $this->alerts); ?>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <span class="text-info">Nova categorias</span>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-6">
+                    <?php echo $this->formCategoriasCadastro; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

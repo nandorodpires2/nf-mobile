@@ -1,0 +1,17 @@
+<div class="panel panel-info">
+    <div class="panel-heading">Editar Orçamento</div>
+    <div class="panel-body">
+        <div class="col-lg-12">
+            <p class="text-success bold">Dados do orçamento:</p>
+            <dl>                
+                <dd><span class="bold">Categoria: </span><?php echo $this->meta->descricao_categoria; ?></dd>
+            </dl>
+            <dl>                
+                <dd><span class="bold">Mês/Ano: </span><?php echo $this->meta->mes_meta .'/'. $this->meta->ano_meta; ?></dd>
+            </dl>
+        </div>
+        <div class="col-lg-5">            
+            <?php echo $this->formMeta; ?>
+        </div>
+    </div>
+</div>

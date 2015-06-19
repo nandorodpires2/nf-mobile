@@ -1,0 +1,189 @@
+<?php
+
+$container = new Zend_Navigation();
+$this->navigation($container);
+
+$container->addPage(
+    array(
+        'label' => 'Início',
+        'module' => 'cliente',
+        'controller' => 'index',
+        'action' => 'index',
+        'pages' => array(
+            array(
+                'label' => 'Movimentações',
+                'module' => 'cliente',
+                'controller' => 'index',
+                'action' => 'index',
+                'pages' => array(
+                    array(
+                        'label' => 'Nova Despesa',
+                        'module' => 'cliente',
+                        'controller' => 'movimentacoes',
+                        'action' => 'nova-despesa',
+                    ),
+                    array(
+                        'label' => 'Nova Receita',
+                        'module' => 'cliente',
+                        'controller' => 'movimentacoes',
+                        'action' => 'nova-receita',
+                    ),
+                    array(
+                        'label' => 'Transferência',
+                        'module' => 'cliente',
+                        'controller' => 'movimentacoes',
+                        'action' => 'transferencia',
+                    ),
+                    array(
+                        'label' => 'Excluir Movimentação',
+                        'module' => 'cliente',
+                        'controller' => 'movimentacoes',
+                        'action' => 'excluir-movimentacao',
+                    ),
+                    array(
+                        'label' => 'Editar Movimentação',
+                        'module' => 'cliente',
+                        'controller' => 'movimentacoes',
+                        'action' => 'editar-movimentacao',
+                    )
+                )
+            ),            
+            array(
+                'label' => 'Orçamentos',
+                'module' => 'cliente',
+                'controller' => 'orcamentos',
+                'action' => 'index',
+                'pages' => array(
+                    array(
+                        'label' => 'Novo Orçamento',
+                        'module' => 'cliente',
+                        'controller' => 'orcamentos',
+                        'action' => 'novo-orcamento'
+                    ),
+                    array(
+                        'label' => 'Editar Orçamento',
+                        'module' => 'cliente',
+                        'controller' => 'orcamentos',
+                        'action' => 'editar-orcamento'
+                    )
+                )
+            ),
+            array(
+                'label' => 'Categorias',
+                'module' => 'cliente',
+                'controller' => 'categorias',
+                'action' => 'index',
+                'pages' => array(
+                    array(
+                        'label' => 'Nova Categoria',
+                        'module' => 'cliente',
+                        'controller' => 'categorias',
+                        'action' => 'nova-categoria'
+                    ),
+                    array(
+                        'label' => 'Editar Categoria',
+                        'module' => 'cliente',
+                        'controller' => 'categorias',
+                        'action' => 'editar'
+                    )
+                )
+            ),
+            array(
+                'label' => 'Minhas Contas',
+                'module' => 'cliente',
+                'controller' => 'contas',
+                'action' => 'index',
+                'pages' => array(
+                    array(
+                        'label' => 'Nova Conta',
+                        'module' => 'cliente',
+                        'controller' => 'contas',
+                        'action' => 'nova-conta'
+                    ),
+                    array(
+                        'label' => 'Editar Conta',
+                        'module' => 'cliente',
+                        'controller' => 'contas',
+                        'action' => 'editar-conta'
+                    ),
+                    array(
+                        'label' => 'Excluir Conta',
+                        'module' => 'cliente',
+                        'controller' => 'contas',
+                        'action' => 'excluir-conta'
+                    )
+                )
+            ),
+            array(
+                'label' => 'Meus Cartões',
+                'module' => 'cliente',
+                'controller' => 'cartoes',
+                'action' => 'index',
+                'pages' => array(
+                    array(
+                        'label' => 'Novo Cartão',
+                        'module' => 'cliente',
+                        'controller' => 'cartoes',
+                        'action' => 'novo-cartao'
+                    ),
+                    array(
+                        'label' => 'Editar Cartão',
+                        'module' => 'cliente',
+                        'controller' => 'cartoes',
+                        'action' => 'editar-cartao'
+                    ),
+                    array(
+                        'label' => 'Excluir Cartão',
+                        'module' => 'cliente',
+                        'controller' => 'cartoes',
+                        'action' => 'excluir-cartao'
+                    )
+                )
+            ),
+            array(
+                'label' => 'Meus Chamados',
+                'module' => 'cliente',
+                'controller' => 'chamados',
+                'action' => 'index',
+                'pages' => array(
+                    array(
+                        'label' => 'Novo Chamado',
+                        'module' => 'cliente',
+                        'controller' => 'chamados',
+                        'action' => 'novo-chamado'
+                    ),
+                    array(
+                        'label' => 'Conversas',
+                        'module' => 'cliente',
+                        'controller' => 'chamados',
+                        'action' => 'conversas'
+                    )
+                )
+            ),
+            array(
+                'label' => 'Configurações',
+                'module' => 'cliente',
+                'controller' => 'meusdados',
+                'action' => 'index',
+                'pages' => array(
+                    array(
+                        'label' => 'Novo Chamado',
+                        'module' => 'cliente',
+                        'controller' => 'chamados',
+                        'action' => 'novo-chamado'
+                    ),
+                    array(
+                        'label' => 'Conversas',
+                        'module' => 'cliente',
+                        'controller' => 'chamados',
+                        'action' => 'conversas'
+                    )
+                )
+            )
+        )
+    )    
+);
+
+echo '<div class="row"><div class="col-lg-12 small"><div class="thumbnail"><span>Você está em: </span>';
+echo $this->navigation()->breadcrumbs()->setLinkLast(false)->setMinDepth(0)->render();
+echo '</div></div></div>';

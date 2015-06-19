@@ -1,0 +1,15 @@
+<?php echo $this->headScript()->appendFile($this->baseUrl('views/js/cliente/movimentacoes/editar-movimentacao.js')); ?>
+<div class="row">    
+    <div class="col-lg-12">            
+        <div class="panel panel-info">            
+            <div class="panel-heading">Alterar Lançamento</div>
+            <div class="panel-body">                
+                <div class="col-lg-4">
+                    <form method="post">
+                        <?php echo $this->formMovimentacoes; ?>                        
+                    </form>        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

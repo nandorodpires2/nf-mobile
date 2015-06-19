@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-lg-12 col-sm-12">        
+        <?php echo View_Helper_Messages::render($this->messages, $this->alerts); ?>
+        <div class="col-lg-6">
+            <div class="well background-color-white">
+                <h3 class="text-green">Meus Dados</h3>
+                <?php echo $this->formSiteCadastro; ?>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="well background-color-white">
+                <h3 class="text-green">Meu Plano</h3>
+                <p>Plano atual: <?php echo $this->planoUsuario->descricao_plano; ?></p>
+                <p>Encerramento: <?php echo $this->planoUsuario->data_encerramento ? View_Helper_Date::getDataView($this->planoUsuario->data_encerramento) : 'Nunca'; ?></p>                
+            </div> 
+            <div class="well background-color-white">
+                <h3 class="text-green">Alertas</h3>                
+            </div> 
+            <div class="well background-color-white">
+                <h3 class="text-green">Configurações</h3> 
+                <ul>
+                    <li><a class="text-info" href="<?php echo $this->url(array(
+                        'module' => 'cliente',
+                        'controller' => 'categorias',
+                        'action' => 'index'
+                    ), null, true); ?>">Gerenciar Categorias</a></li>
+                </ul>
+            </div> 
+        </div>
+    </div>    
+</div>

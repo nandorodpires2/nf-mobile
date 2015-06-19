@@ -1,0 +1,47 @@
+<?php echo $this->headLink()->appendStylesheet($this->baseUrl('views/css/movimentacoes/index.css')); ?>
+<?php echo $this->headScript()->appendFile($this->baseUrl('views/js/movimentacoes/index.js')); ?>
+<div id="pages">
+    <div id="movimentacoes-index">                             
+        <fieldset>
+            <legend>Filtros</legend>
+            <div id="sub-options-bar">
+                <div id="form-filto-mes">
+                    <table>
+                        <tr>
+                            <td><?php echo $this->formMes; ?></td>
+                            <td><?php echo $this->formDias; ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>                
+        </fieldset>            
+    </div>
+</div>
+<div id="pages">
+    <div id="movimentacoes-index">                     
+        <div class="lista-movimentacoes">           
+            <?php if ($this->datasMes->count() > 0) : ?>
+                <div id="subtitulo-lista">
+                    <div class="subtitulo-tipo">TIPO</div>
+                    <div class="subtitulo-descricao">DESCRIÇÃO</div>
+                    <div class="subtitulo-categoria">CATEGORIA</div>
+                    <div class="subtitulo-valor">VALOR</div>
+                    <div class="subtitulo-status">STATUS</div>
+                    <div class="subtitulo-acoes">AÇÕES</div>
+                </div>
+                <?php foreach ($this->datasMes as $data) : ?>            
+                <div id="<?php echo $data->dia; ?>" class="data-movimentacao">
+                    <?php echo View_Helper_Date::getDateCompleteView($data->data_movimentacao); ?>
+                </div>
+                <div style="text-align: center; margin: 7px 0;" id="<?php echo 'loader-lanc-' . $data->dia; ?>">
+                    <img src="<?php echo $this->baseUrl('views/img/loader-lanc.gif'); ?>">
+                    <span>Carregando os lançamentos...</span>
+                </div>                
+                <div id="<?php echo 'lanc-' . $data->dia; ?>"></div>                
+                <?php endforeach; ?>
+            <?php else : ?>
+                <center>Nenhum Lançamento Cadastrado para este Mês</center>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

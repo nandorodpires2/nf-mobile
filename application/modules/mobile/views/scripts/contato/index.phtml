@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-lg-12">
+        <p><h4 class="text-green">Faça Contato</h4></p>
+        <?php echo View_Helper_Messages::render($this->messages); ?>
+    </div>
+    <div class="col-lg-5">
+        <div class="well background-color-white"> 
+        <!--<img class="img-banner" src="<?php echo $this->baseUrl('views/img/img_contact_us.jpg'); ?>" />-->
+            <p class="margin-top-10px text-justify">
+                Por favor, preencha todos os campos ao lado. Em até 2 (dois) dias úteis,
+                entraremos em contato.
+            </p>
+            <p class="text-justify">
+                Desde já a equipe <label class="text-blue">NewFinances</label> agradece seu contato.
+            </p>
+        </div>
+    </div>
+    <div class="col-lg-7 bg">        
+        <div class="well background-color-white"> 
+            <?php echo $this->formSiteContato; ?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-lg-12">
+        <?php echo View_Helper_Messages::render($this->messages); ?>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Meus Chamados
+                <div class="pull-right">
+                    <a href="<?php echo $this->url(array(
+                        'module' => 'cliente',
+                        'controller' => 'chamados',
+                        'action' => 'novo-chamado'
+                    ), null, true); ?>">
+                        <img src="<?php echo $this->baseUrl('views/img/icon_add.png'); ?>" width="25px" title="Novo Chamado"/> Novo Chamado
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-tabs" role="tablist">                    
+                    <li class="active">
+                        <a href="#abertos" role="tab" data-toggle="tab">
+                            <span class="text-danger">Chamados Abertos</span>
+                            <span class="badge"><?php echo $this->chamados_abertos->count(); ?></span>
+                        </a>
+                    </li>                  
+                    <li>
+                        <a href="#fechados" role="tab" data-toggle="tab">
+                            <span class="text-success">Chamados Fechados</span>
+                            <span class="badge"><?php echo $this->chamados_finalizados->count(); ?></span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="tab-content">                    
+                    <div class="tab-pane fade active in" id="abertos">  
+                        <div class="col-lg-12 panel-bordered">
+                        <?php if ($this->chamados_abertos->count() > 0) : ?>
+                        
+                            <table class="table table-responsive table-striped margin-top-10px">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Abertura</th>
+                                    <th>Tipo</th>
+                                    <th>Assunto</th>
+                                    <th>Ações</th>
+                                </tr>
+                                <?php foreach ($this->chamados_abertos as $chamado) : ?>
+                                    <tr>
+                                        <td><?php echo $chamado->id_chamado; ?></td>
+                                        <td><?php echo View_Helper_Date::getDateTimeView($chamado->data_abertura); ?></td>
+                                        <td><?php echo $chamado->descricao; ?></td>
+                                        <td><?php echo $chamado->assunto; ?></td>                                                                                
+                                        <td>
+                                            <a class="btn btn-sm btn-info" href="<?php echo $this->url(array(
+                                                'module' => 'cliente',
+                                                'controller' => 'chamados',
+                                                'action' => 'conversas',
+                                                'id_chamado' => $chamado->id_chamado
+                                            ), null, true); ?>">Ver conversas</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </table>                        
+                        <?php else : ?>
+                            <div class="text-warning padding-10px-0">Nenhum chamado aberto</div>
+                        <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="fechados">
+                        <div class="col-lg-12 panel-bordered">
+                        <?php if ($this->chamados_finalizados->count() > 0) : ?>                        
+                            <table class="table table-responsive table-striped margin-top-10px">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Abertura</th>
+                                    <th>Tipo</th>
+                                    <th>Assunto</th>
+                                    <th>Ações</th>
+                                </tr>
+                                <?php foreach ($this->chamados_finalizados as $chamado) : ?>
+                                    <tr>
+                                        <td><?php echo $chamado->id_chamado; ?></td>
+                                        <td><?php echo $chamado->data_abertura; ?></td>
+                                        <td><?php echo $chamado->descricao; ?></td>
+                                        <td><?php echo $chamado->assunto; ?></td>
+                                        <td>
+                                            <a class="btn btn-sm btn-warning" href="<?php echo $this->url(array(
+                                                'module' => 'cliente',
+                                                'controller' => 'chamados',
+                                                'action' => 'conversas',
+                                                'id_chamado' => $chamado->id_chamado
+                                            ), null, true); ?>">Ver histórico</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </table>
+                        <?php else : ?>
+                            <div class="text-warning padding-10px-0">Nenhum chamado fechado</div>
+                        <?php endif; ?>
+                        </div>
+                    </div>                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

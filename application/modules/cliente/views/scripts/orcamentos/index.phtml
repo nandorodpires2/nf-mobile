@@ -1,0 +1,96 @@
+<?php echo $this->headScript()->appendFile($this->baseUrl('views/js/cliente/orcamentos/index.js')); ?>
+<div class="row">    
+    <div class="col-lg-12">    
+        <?php echo View_Helper_Messages::render($this->messages); ?>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Orçamentos
+                <div class="pull-right">
+                    <a href="<?php echo $this->url(array(
+                        'module' => 'cliente',
+                        'controller' => 'orcamentos',
+                        'action' => 'novo-orcamento'
+                    ), null, true); ?>">
+                        <img src="<?php echo $this->baseUrl('views/img/icon_add.png'); ?>" width="25px" title="Cadastrar Orçamento"/> 
+                        <span class="text-info">Novo Orçamento</span>
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">       
+                <?php if ($this->metas->count() > 0) : ?>
+                <table class="table table-responsive table-striped">
+                    <tr>
+                        <th class="text-left">Categoria</th>
+                        <th class="text-right">Orçamento</th>
+                        <th class="text-right">Total Gasto</th>
+                        <th class="text-right">Porcentagem</th>
+                        <th class="text-right">Projeção</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                    <?php foreach ($this->metas as $meta) : ?>
+                    <?php 
+                        $total_gasto = View_Helper_Movimentacao::getTotalGastoCategoriaMes($meta->id_categoria);
+                        $porcentagem = View_Helper_Meta::getPorcentagemTotalGastos($meta->valor_meta, $total_gasto);
+                    ?>
+                    <tr class="text-right">
+                        <td class="text-left"><?php echo $meta->descricao_categoria; ?></td>
+                        <td><?php echo View_Helper_Currency::getCurrency($meta->valor_meta); ?></td>
+                        <td><?php echo View_Helper_Currency::getCurrency($total_gasto); ?></td>
+                        <td><?php echo View_Helper_Meta::getStatusMeta($porcentagem); ?>%</td>
+                        <td><?php echo View_Helper_Meta::getStatusMeta(View_Helper_Meta::getProjecaoMeta($porcentagem)); ?>%</td>
+                        <td class="col-lg-1 text-center">
+                            <a href="<?php echo $this->url(array(
+                                'module' => 'cliente',
+                                'controller' => 'orcamentos',
+                                'action' => 'editar-orcamento',
+                                'id_orcamento' => $meta->id_meta
+                            )); ?>">
+                                <img class="margin-0px-5px" src="<?php echo $this->baseUrl('views/img/icon_edit.png'); ?>" width="20" title="Editar" />
+                            </a>
+                            <a href="<?php echo $this->url(array(
+                                'module' => 'cliente',
+                                'controller' => 'orcamentos',
+                                'action' => 'excluir-orcamento',
+                                'id_orcamento' => $meta->id_meta
+                            )); ?>">
+                                <img class="margin-0px-5px" src="<?php echo $this->baseUrl('views/img/icon_delete.png'); ?>" width="20" title="Excluir" />
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+                <div class="col-lg-2">
+                    <hr />
+                    <p class="small bold">Legenda:</p>
+                    <p class="bg-success text-success bold text-center small">Até 50%</p>
+                    <p class="bg-warning text-warning bold text-center small">Entre 51% e 80%</p>
+                    <p class="bg-danger text-danger bold text-center small">Entre 81% e 99%</p>
+                    <p class="bg-danger bold text-center small">Igual ou acima de 100%</p>
+                </div>
+                <div class="col-lg-4 pull-right">
+                    <table class="table bold">
+                        <tr>
+                            <td>Total Orçamento:</td>
+                            <td class="text-right"><?php echo View_Helper_Currency::getCurrency($this->total_meta); ?></td>
+                        </tr>
+                        <tr>
+                            <td>Total Gasto:</td>
+                            <td class="text-right"><?php echo View_Helper_Currency::getCurrency($this->total_gastos); ?></td>
+                        </tr>
+                        <tr>
+                            <td>Porcentagem Orçamento:</td>
+                            <td class="text-right"><?php echo View_Helper_Meta::getStatusMeta($this->porcentagem_orcamento); ?>%</td>
+                        </tr>
+                        <tr>
+                            <td>Projeção Orçamento:</td>
+                            <td class="text-right"><?php echo View_Helper_Meta::getStatusMeta(View_Helper_Meta::getProjecaoMeta($this->porcentagem_orcamento)); ?>%</td>
+                        </tr>
+                    </table>
+                </div>
+                <?php else : ?>
+                <div class="text-warning">Nenhum registro encontrado.</div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>

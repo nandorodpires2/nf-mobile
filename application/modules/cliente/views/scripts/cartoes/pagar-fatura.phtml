@@ -1,0 +1,49 @@
+<div class="row">    
+    <div class="col-lg-12">    
+        <?php echo View_Helper_Messages::render($this->messages); ?> 
+        <div class="panel panel-info">
+            <div class="panel-heading">Pagar Fatura</div>
+            <div class="panel-body">                                                
+                <div class="col-lg-6">
+                    <h4 class="text-info text-center">DADOS DA FATURA</h4>
+                    <dl class="dl-horizontal">
+                        <dt class="">Cartão:</dt>
+                        <dd>
+                            <?php echo ucfirst($this->fatura->bandeira_cartao); ?> / 
+                            <?php echo $this->fatura->descricao_cartao; ?>                            
+                        </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <dt>Vencimento:</dt>
+                        <dd><?php echo View_Helper_Date::getDataView($this->fatura->vencimento_fatura); ?></dd>
+                    </dl>
+                    <dl class="dl-horizontal text-info">
+                        <dt>Saldo Anterior:</dt>
+                        <dd><?php echo View_Helper_Currency::getCurrency($this->saldo_anterior); ?></dd>
+                    </dl>
+                    <dl class="dl-horizontal text-success">
+                        <dt>(-) Pagamentos:</dt>
+                        <dd><?php echo View_Helper_Currency::getCurrency($this->valorPago->saldo); ?></dd>
+                    </dl>
+                    <dl class="dl-horizontal text-danger">
+                        <dt>(+) Compras/Débitos:</dt>
+                        <dd><?php echo View_Helper_Currency::getCurrency($this->fatura->valor_fatura); ?></dd>
+                    </dl>
+                    <dl class="dl-horizontal <?php echo $this->total_fatura < 0 ? 'text-danger' : 'text-sucess'; ?>">
+                        <dt>(=) Total Fatura:</dt>
+                        <dd><?php echo View_Helper_Currency::getCurrency($this->total_fatura); ?></dd>
+                    </dl>
+                    <?php if ($this->valorPago->saldo == 0) : ?>
+                    <dl class="dl-horizontal">
+                        <dt>Pagamento Mínimo:</dt>
+                        <dd><?php echo View_Helper_Currency::getCurrency($this->pagamento_minimo); ?></dd>
+                    </dl>
+                    <?php endif; ?>
+                </div>
+                <div class="col-lg-4">                    
+                    <?php echo $this->formPagarFatura; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

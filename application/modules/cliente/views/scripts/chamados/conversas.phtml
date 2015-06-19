@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-lg-12">        
+        <h4 class="alert alert-success">Conversas do Chamado</h4>
+        <?php echo View_Helper_Messages::render($this->messages); ?>       
+        <div class="">
+            <?php if ($this->chamado->status === 'Aberto') : ?>
+            <a class="btn btn-lg btn-success" href="" data-toggle="modal" data-target="#modalResponderChamado" id="responder-chamado">Responder</a>            
+            <a class="btn btn-lg btn-danger" href="<?php echo $this->url(array(
+                'module' => 'cliente',
+                'controller' => 'chamados',
+                'action' => 'finalizar',
+                'id_chamado' => $this->chamado->id_chamado
+            ), null, true); ?>">Finalizar</a>
+            <?php else : ?>
+            <div class="alert alert-warning">
+                Chamado finalizado 
+                <?php echo View_Helper_Date::getDateCompleteView($this->chamado->data_fechamento); ?> às 
+                <?php echo View_Helper_Date::getTimeView($this->chamado->data_fechamento); ?>h
+            </div>
+            <?php endif; ?>
+        </div>
+        <ul class="timeline" style="margin: 0">
+            <li> 
+                <div class="timeline-badge"><i class="glyphicon"></i></div> 
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <p>                        
+                            <small class="text-muted">
+                                <i class="glyphicon glyphicon-time"></i>                                            
+                                <?php echo View_Helper_Date::getDateTimeView($this->chamado->data_abertura); ?>
+                            </small>
+                            <small class="text-muted"><?php echo $this->chamado->nome_completo; ?></small>
+                        </p>
+                        <h4 class="timeline-title"><?php echo $this->chamado->assunto; ?></h4>                    
+                    </div> 
+                    <div class="timeline-body"><?php echo $this->chamado->mensagem; ?></div>
+                </div>
+            </li>
+        </ul>
+        <?php if ($this->respostas->count() > 0) : ?>
+            <?php foreach ($this->respostas as $resposta) : ?>
+            <?php $inverted = $resposta->id_usuario == $this->chamado->id_usuario ? '' : 'timeline-inverted'; ?>
+            <ul class="timeline" style="margin: 0">
+                <li class="<?php echo $inverted; ?>"> 
+                    <div class="timeline-badge"><i class="glyphicon"></i></div> 
+                    <!--<div class="timeline-badge"><i class="glyphicon"></i></div>-->
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <p>
+                                <small class="text-muted">
+                                    <i class="glyphicon glyphicon-time"></i>                                            
+                                    <?php echo View_Helper_Date::getDateTimeView($resposta->data_resposta); ?>
+                                </small>
+                                <small class="text-muted"><?php echo $resposta->nome_completo; ?></small>
+                            </p>
+                        </div> 
+                        <div class="timeline-body"><?php echo $resposta->resposta; ?></div>
+                    </div>
+                </li>
+            </ul>
+            <?php endforeach; ?>
+        <?php else : ?>
+        <div class="alert alert-warning" role="alert">Nenhuma resposta</div>
+        <?php endif; ?>
+    </div>
+    <!-- Modal de Saldo de contas -->
+    <div class="modal" id="modalResponderChamado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h3 class="modal-title text-success" id="myModalLabel">Responder Chamado</h3>
+                </div>
+                <div class="modal-body" id="responder-chamado">                    
+                    <?php
+                        $this->formResponder->setAction($this->url(array('action' => 'responder')));
+                        echo $this->formResponder; 
+                    ?>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
