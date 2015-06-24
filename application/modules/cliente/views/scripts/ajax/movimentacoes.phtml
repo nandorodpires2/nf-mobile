@@ -1,121 +1,29 @@
-<div class="col-lg-12">
-    <h5 class="bold">Lançamentos de <?php echo $this->data_movimentacao; ?></h5>
+<div class="row">
+    <div class="col-lg-12">
+        <h5 class="small"><?php echo $this->data_movimentacao; ?></h5>
+    </div>
 </div>
-<div class="col-lg-12">
-    
+<?php if ($this->movimentacoes->count() > 0) : ?>
+<div class="row">    
+    <?php foreach ($this->movimentacoes as $movimentacao) : ?>
+    <div class="col-lg-12 small <?php echo View_Helper_Movimentacao::getClassRowMovimentacao($movimentacao->id_tipo_movimentacao); ?>">
+        <?php echo $movimentacao->descricao_movimentacao; ?>
+        <?php if ($movimentacao->id_movimentacao_pai) : ?>
+        <span class="glyphicon glyphicon-repeat"></span>
+        <?php endif; ?>
+        <?php if ($movimentacao->id_tipo_movimentacao == 3) : ?>
+            <p class="small text-muted"><?php echo $movimentacao->descricao_cartao; ?></p>
+        <?php elseif ($movimentacao->id_tipo_movimentacao == 4) : ?>
+            <p class="small text-muted">De <?php echo $movimentacao->descricao_conta; ?> para <?php echo $movimentacao->descricao_conta_destino; ?></p>                
+        <?php else : ?>
+            <p class="small text-muted"><?php echo $movimentacao->descricao_conta; ?></p>
+        <?php endif; ?>
+    </div>    
+    <div class="col-lg-12 small">
+        <hr />
+    </div>
+    <?php endforeach; ?>        
 </div>
-<div class="col-lg-12 margin-top-10px">    
-    <?php if ($this->movimentacoes->count() > 0) : ?>
-    <table class="table table-striped table-responsive">
-        <tr>
-            <th class="col-lg-1">Tipo</th> 
-            <th class="col-lg-4">Descrição</th> 
-            <th class="col-lg-3">Categoria</th> 
-            <th class="col-lg-1 text-right">Valor</th> 
-            <th class="col-lg-2 text-center">Status</th> 
-            <th class="col-lg-1 text-center">Ações</th> 
-        </tr>
-        <?php foreach ($this->movimentacoes as $movimentacao) : ?>
-        <tr class="<?php echo View_Helper_Movimentacao::getClassRowMovimentacao($movimentacao->id_tipo_movimentacao); ?>">
-            <td class="col-lg-1"><?php echo $movimentacao->tipo_movimentacao; ?></td>
-            <td class="col-lg-4">
-                <?php echo $movimentacao->descricao_movimentacao; ?>
-                <?php if ($movimentacao->id_movimentacao_pai) : ?>
-                <span class="glyphicon glyphicon-repeat"></span>
-                <?php endif; ?>
-                <?php if ($movimentacao->id_tipo_movimentacao == 3) : ?>
-                    <p class="small text-muted"><?php echo $movimentacao->descricao_cartao; ?></p>
-                <?php elseif ($movimentacao->id_tipo_movimentacao == 4) : ?>
-                    <p class="small text-muted">De <?php echo $movimentacao->descricao_conta; ?> para <?php echo $movimentacao->descricao_conta_destino; ?></p>                
-                <?php else : ?>
-                    <p class="small text-muted"><?php echo $movimentacao->descricao_conta; ?></p>
-                <?php endif; ?>
-            </td>
-            <td class="col-lg-3"><?php echo $movimentacao->descricao_categoria; ?></td>
-            <td class="col-lg-1 text-right"><?php echo View_Helper_Currency::getCurrency($movimentacao->valor_movimentacao); ?></td>
-            <td class="col-lg-2 text-center">                
-                <?php if ($movimentacao->realizado) : ?>
-                    <a href="<?php echo $this->url(array(
-                            'module' => 'cliente',
-                            'controller' => 'movimentacoes',
-                            'action' => 'status',
-                            'id_movimentacao' => $movimentacao->id_movimentacao,
-                            'status' => $movimentacao->realizado
-                        )); ?>">
-                        <img class="" src="<?php echo $this->baseUrl('views/img/icon_cool.png'); ?>" width="30" title="Realizado" />
-                    </a>
-                <?php else : ?>
-                    <a href="<?php echo $this->url(array(
-                            'module' => 'cliente',
-                            'controller' => 'movimentacoes',
-                            'action' => 'status',
-                            'id_movimentacao' => $movimentacao->id_movimentacao,
-                            'status' => $movimentacao->realizado
-                    )); ?>">
-                        <img class="" src="<?php echo $this->baseUrl('views/img/icon_bad.png'); ?>" width="30" title="Previsto" />
-                    </a>
-                <?php endif; ?>
-            </td>
-            <td class="col-lg-1 text-center">
-                <a href="<?php echo $this->url(array(
-                    'module' => 'cliente',
-                    'controller' => 'movimentacoes',
-                    'action' => 'editar-movimentacao',
-                    'id_movimentacao' => $movimentacao->id_movimentacao
-                )); ?>">
-                    <img class="margin-0px-5px" src="<?php echo $this->baseUrl('views/img/icon_edit.png'); ?>" width="20" title="Editar" />
-                </a>
-                <a href="<?php echo $this->url(array(
-                    'module' => 'cliente',
-                    'controller' => 'movimentacoes',
-                    'action' => 'excluir-movimentacao',
-                    'id_movimentacao' => $movimentacao->id_movimentacao
-                )); ?>">
-                    <img class="margin-0px-5px" src="<?php echo $this->baseUrl('views/img/icon_delete.png'); ?>" width="20" title="Excluir" />
-                </a>
-            </td>
-        </tr>
-        <?php endforeach; ?>        
-    </table>    
+<?php else : ?>
     
-        <div class="col-lg-8"></div>
-        <div class="col-lg-4">
-            <p class="text-info">Resumo do dia:</p>
-            <table class="table">
-                <tr class="text-green">
-                    <th colspan="5" class="text-right small">
-                        TOTAL RECEITAS:
-                        <p class="text-muted small">Previsto:</p>
-                    </th>
-                    <th colspan="2" class="text-right">
-                        <?php echo View_Helper_Currency::getCurrency($this->totalReceita); ?>
-                        <p class="text-muted small"><?php echo View_Helper_Currency::getCurrency($this->totalReceitaPrevisto); ?></p>
-                    </th>            
-                </tr>
-                <tr class="text-red">
-                    <th colspan="5" class="text-right small">
-                        TOTAL DESPESAS:
-                        <p class="text-muted small">Previsto:</p>
-                    </th>
-                    <th colspan="2" class="text-right">
-                        <?php echo View_Helper_Currency::getCurrency($this->totalDespesa); ?>
-                        <p class="text-muted small"><?php echo View_Helper_Currency::getCurrency($this->totalDespesaPrevisto); ?></p>
-                    </th>            
-                </tr>
-                <tr class="<?php echo $this->saldo >= 0 ? 'text-green' : 'text-red'; ?>">
-                    <th colspan="5" class="text-right small">
-                        SALDO DIA:
-                        <p class="text-muted small">Previsto:</p>
-                    </th>
-                    <th colspan="2" class="text-right">
-                        <?php echo View_Helper_Currency::getCurrency($this->saldo); ?>
-                        <p class="text-muted small"><?php echo View_Helper_Currency::getCurrency($this->saldoPrevisto); ?></p>
-                    </th>            
-                </tr>
-            </table>
-        </div>
-    
-    <?php else : ?>
-    <div class="text-warning">Nenhuma movimentação cadastrada.</div>
-    <?php endif; ?>
-</div>
+<?php endif; ?>

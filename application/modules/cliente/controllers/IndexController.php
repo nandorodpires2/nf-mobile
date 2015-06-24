@@ -4,7 +4,7 @@ class Cliente_IndexController extends Zend_Controller_Action {
 
     public function init() {
         
-        $this->_redirect("/cliente/movimentacoes/nova-receita");
+        //$this->_redirect("/cliente/movimentacoes/nova-receita");
         
         $translate = Zend_Registry::get('Zend_Translate');
         $this->view->translate = $translate;

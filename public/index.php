@@ -21,8 +21,8 @@ defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
 
 // Define path to emails layouts
-defined('EMAILS_SITE')
-    || define('EMAILS_SITE', APPLICATION_PATH . '/modules/site/views/emails');
+defined('EMAILS_MOBILE')
+    || define('EMAILS_MOBILE', APPLICATION_PATH . '/modules/mobile/views/emails');
 
 // Define path to emails cron
 defined('EMAILS_CRON')

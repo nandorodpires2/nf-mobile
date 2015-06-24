@@ -1,29 +1,14 @@
-
-
 <?php echo $this->headScript()->appendFile($this->baseUrl('views/js/cliente/index/index.js')); ?>
 <?php echo $this->headScript()->appendFile($this->baseUrl('views/js/layout.js')); ?>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="alert alert-warning">
-            <span class="small">Página em construção</span>
-        </div>
-    </div>         
-</div>
-
-<!--
 <div class="row">       
     <div class="col-lg-12">        
-        <?php echo View_Helper_Messages::render($this->messages, $this->alerts); ?>
-    
-        <div class="row">            
-                      
-        </div>
-    
+        <?php echo View_Helper_Messages::render($this->messages, $this->alerts); ?>        
         <div class="panel panel-info">
-            <div class="panel-heading">
+            <div class="panel-heading small">
                 <span class="text-info">Lançamentos</span>
                 <?php if ($this->isConta) : ?>
+                <!--
                 <div class="pull-right">
                     <a href="" data-toggle="modal" data-target="#modalSaldoContas" id="saldo-contas">
                         <img class="margin-0px-5px" src="<?php echo $this->baseUrl('views/img/icon_balance.png'); ?>" width="20" title="Ver Saldo"/>
@@ -34,11 +19,13 @@
                         <span class="text-info">Ver Gráfico Anual</span>
                     </a>
                 </div>
+                -->
                 <?php endif; ?>
             </div>
             <div class="panel-body">                
                 <div class="row">
-                    <div class="col-lg-3">    
+                    
+                    <div class="col-lg-3 col-sm-4">    
                         <div class="form-group">
                             <div class="input-group">       
                                 <div class="input-group-addon">
@@ -48,10 +35,13 @@
                             </div>
                         </div>                            
                     </div>
+                    
                     <!--
                     <div class="col-lg-2" style="margin-top: 4px;">
                          <a class="btn btn-xs btn-success" href="" data-toggle="modal" data-target="#modalTodosLancamentos" id="todos-lancamentos">Ver Todos os Lançamentos</a>
                     </div>
+                    -->
+                    <!--
                     <div class="col-lg-1">&nbsp;</div>
                     <div class="col-lg-4">
                         <div class="form-group">
@@ -63,7 +53,9 @@
                                 
                             </div>
                         </div>    
-                    </div>            
+                    </div>          
+                    -->
+                    <!--
                     <div class="col-lg-2" style="margin-top: 4px;">
                         <a class="btn btn-xs btn-info" href="<?php echo $this->url(array(
                             'module' => 'cliente',
@@ -71,16 +63,16 @@
                             'action' => 'avancada'
                         ), null, true); ?>">Pesquisa Avançada</a>
                     </div>            
-                    
+                    -->
                 </div>         
                 <hr style="border-color: #DCDCDC;" />
                 <div id="movimentacoes"></div>
             </div>
-        </div>    
+        </div>          
     </div>
     <div class="col-lg-12">
         <div class="panel panel-info">
-            <div class="panel-heading"><span class="text-blue">Cartões de Crédito</span></div>
+            <div class="panel-heading small"><span class="text-blue">Cartões de Crédito</span></div>
             <div class="panel-body">
                 <?php if ($this->faturas->count() > 0) : ?>                
                 <table class="table table-bordered">
@@ -132,24 +124,25 @@
                     <?php endforeach; ?>                                
                 </table>
                 <?php else : ?>                
-                <div class="text-warning">Nenhum cartão de crédito cadastrado</div>
+                <div class="text-warning small">Nenhum cartão de crédito cadastrado</div>
                 <?php endif; ?>
             </div>
         </div>
     </div>
     <div class="col-lg-12">
         <div class="panel panel-info">
-            <div class="panel-heading"><span class="text-blue">Categorias/Orçamento</span></div>
+            <div class="panel-heading small"><span class="text-blue">Categorias/Orçamento</span></div>
             <div class="panel-body">
                 <?php if ($this->isConta) : ?>
-                <div class="col-lg-6" id="dados-categorias"></div>
-                <div class="col-lg-6" id="dados-orcamentos"></div>
+                <div class="col-lg-12" id="dados-categorias"></div>
+                <!--<div class="col-lg-6" id="dados-orcamentos"></div>-->
                 <?php else : ?>
-                <div class="text-warning">Nenhum registro encontrado.</div>
+                <div class="text-warning small">Nenhum registro encontrado.</div>
                 <?php endif; ?>
             </div>
         </div>
     </div>
+    <!--
     <div class="col-lg-6">
         <div class="panel panel-success">
             <div class="panel-heading">
@@ -313,6 +306,5 @@
             </div>
         </div>
     </div>    
-    
+    -->
 </div>
--->

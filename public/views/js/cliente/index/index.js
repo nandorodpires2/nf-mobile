@@ -39,7 +39,7 @@ function buscaMovimentacoesData(data, id_conta) {
         dataType: "html",
         cache: false,
         beforeSend: function() {                        
-            $("#movimentacoes").html("Carregando as movimentações... <img src='" + base_url + "views/img/ajax-loader.gif' />");
+            $("#movimentacoes").html("Carregando... <img src='" + base_url + "views/img/ajax-loader.gif' />");
         },
         success: function(dados) { 
             $("#movimentacoes").html(dados);            

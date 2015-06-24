@@ -38,7 +38,7 @@ class Mobile_ContatoController extends Zend_Controller_Action {
 
                     // envia um e-mail de resposta para o visitante
                     $html = new Zend_View();
-                    $html->setScriptPath(EMAILS_SITE . '/contato/');
+                    $html->setScriptPath(EMAILS_MOBILE . '/contato/');
 
                     // assign values
                     $html->assign('nome', $dadosContato['nome']);
