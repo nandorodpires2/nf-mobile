@@ -3,27 +3,37 @@
         <h5 class="small"><?php echo $this->data_movimentacao; ?></h5>
     </div>
 </div>
-<?php if ($this->movimentacoes->count() > 0) : ?>
-<div class="row">    
+<?php if ($this->movimentacoes->count() > 0) : ?>    
     <?php foreach ($this->movimentacoes as $movimentacao) : ?>
-    <div class="col-lg-12 small <?php echo View_Helper_Movimentacao::getClassRowMovimentacao($movimentacao->id_tipo_movimentacao); ?>">
-        <?php echo $movimentacao->descricao_movimentacao; ?>
-        <?php if ($movimentacao->id_movimentacao_pai) : ?>
-        <span class="glyphicon glyphicon-repeat"></span>
-        <?php endif; ?>
-        <?php if ($movimentacao->id_tipo_movimentacao == 3) : ?>
-            <p class="small text-muted"><?php echo $movimentacao->descricao_cartao; ?></p>
-        <?php elseif ($movimentacao->id_tipo_movimentacao == 4) : ?>
-            <p class="small text-muted">De <?php echo $movimentacao->descricao_conta; ?> para <?php echo $movimentacao->descricao_conta_destino; ?></p>                
-        <?php else : ?>
-            <p class="small text-muted"><?php echo $movimentacao->descricao_conta; ?></p>
-        <?php endif; ?>
-    </div>    
-    <div class="col-lg-12 small">
-        <hr />
+    <div class="row <?php echo View_Helper_Movimentacao::getClassRowMovimentacao($movimentacao->id_tipo_movimentacao); ?>">
+        <div class="col-lg-8 col-xs-8 col-md-8 col-sm-8 small ">
+            <?php echo $movimentacao->descricao_movimentacao; ?>
+            <?php if ($movimentacao->id_movimentacao_pai) : ?>
+            <span class="glyphicon glyphicon-repeat"></span>
+            <?php endif; ?>
+            <?php if ($movimentacao->id_tipo_movimentacao == 3) : ?>
+                <p class="small text-muted"><?php echo $movimentacao->descricao_cartao; ?></p>
+            <?php elseif ($movimentacao->id_tipo_movimentacao == 4) : ?>
+                <p class="small text-muted">De <?php echo $movimentacao->descricao_conta; ?> para <?php echo $movimentacao->descricao_conta_destino; ?></p>                
+            <?php else : ?>
+                <p class="small text-muted"><?php echo $movimentacao->descricao_conta; ?></p>
+            <?php endif; ?>
+        </div>    
+        <div class="col-lg-2 col-xs-2 col-md-2 col-sm-2 small">
+            <p class=""><?php echo $movimentacao->valor_movimentacao < 0 ? $this->currency($movimentacao->valor_movimentacao * -1) : $this->currency($movimentacao->valor_movimentacao); ?></p>
+        </div>
+        <div class="col-lg-1 col-xs-1 col-md-1 col-sm-1 small">
+            <?php if ($movimentacao->realizado) : ?>                
+                <img class="" src="<?php echo $this->baseUrl('views/img/icon_cool.png'); ?>" width="20" title="Realizado" />                
+            <?php else : ?>
+                <img class="" src="<?php echo $this->baseUrl('views/img/icon_bad.png'); ?>" width="20" title="Previsto" />                
+            <?php endif; ?>
+        </div>
+        <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12 small">
+            <hr />
+        </div>
     </div>
     <?php endforeach; ?>        
-</div>
 <?php else : ?>
     
 <?php endif; ?>
