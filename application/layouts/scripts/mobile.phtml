@@ -74,9 +74,9 @@
         
         <nav class="navbar" style="margin-bottom: -10px; margin-left: 20px;" role="navigation">  
             
-            <div class="background-color-white">
-                <div class="container container-logo">
-                    <img class="img-responsive margin-10px-0px" src="<?php echo $this->baseUrl('views/img/logo_newfinances.png'); ?>" width="150"/>            
+            <div class="background-color-white">                
+                <div class="container container-fluid container-logo">
+                    <img class="img img-responsive margin-10px-0px" src="<?php echo $this->baseUrl('views/img/logo_newfinances.png'); ?>" width="150"/>            
                 </div>
             </div>
         </nav> 
@@ -89,12 +89,15 @@
                 </div>           
             </div>
         </div>
+        
         <footer>   
-            <div class="col-lg-12 background-color-orange">
+            <div class="background-color-orange">
                 <div class="container container-fluid">
                     <div class="row">
-                        <div class="col-lg-4 small text-center text-white">contato@newfinances.com.br</div>
-                        <div class="col-lg-4 text-center">
+                        <div class="col-lg-12 small text-center text-white">contato@newfinances.com.br</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 text-center" style="padding: 10px;">
                             <a class="img redes-sociais" href="https://www.facebook.com/sisnewfinances" target="_blank">
                                 <img class="redes-sociais img-circle" src="<?php echo $this->baseUrl('views/img/icon_face_social.png'); ?>" />
                             </a>
@@ -105,7 +108,9 @@
                                 <img class="redes-sociais" src="<?php echo $this->baseUrl('views/img/icon_google_plus_social.png'); ?>" />
                             </a>
                         </div>
-                        <div class="col-lg-4 small text-center text-white">Copyright NewFinances. Todos os direitos reservados</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 small text-center text-white">Copyright NewFinances. Todos os direitos reservados</div>
                     </div>
                 </div>        
             </div>            
