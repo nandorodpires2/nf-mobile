@@ -1,21 +1,14 @@
 <?php echo $this->headScript()->appendFile($this->baseUrl('views/js/site/usuarios/login.js')); ?>
+<?php echo View_Helper_Messages::render($this->messages); ?>                
 <div class="row margin-10px">
-    <div class="col-lg-12">    
-        <?php echo View_Helper_Messages::render($this->messages); ?>       
-        <div class="panel panel-success">
-            <div class="panel-heading">Acesse sua conta</div>
-            <div class="panel-body">            
-                <div class="col-lg-5">
-                    <?php echo $this->formUsuariosLogin; ?>
-                    <a href="<?php echo $this->url(array(
-                        'module' => 'mobile',
-                        'controller' => 'usuarios',
-                        'action' => 'recuperar-senha'
-                    ), null, true); ?>" class="text-info small">Recuperar a senha</a>
-                </div>
-                <div class="col-lg-7"></div>
-            </div>
-        </div>
+    <div class="col-lg-12">            
+        <h4 class="text-info">Acesse sua conta</h4>
+        <?php echo $this->formUsuariosLogin; ?>
+        <a href="<?php echo $this->url(array(
+            'module' => 'mobile',
+            'controller' => 'usuarios',
+            'action' => 'recuperar-senha'
+        ), null, true); ?>" class="text-info small">Recuperar a senha</a>        
     </div>
 </div>
 

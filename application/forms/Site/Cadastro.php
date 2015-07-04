@@ -162,17 +162,18 @@ class Form_Site_Cadastro extends Zend_Form {
                 'Errors',                
                 array(
                     'Label', array(
-                        'tag' => 'span',
-                        'class' => 'control-label margin-top-10px'
+                        'tag' => 'div',
+                        'class' => 'small control-label',
+                        'placement' => 'APPEND'
                     )
                 ),
                 array(
                     'HtmlTag', array(
-                        'tag' => 'span',
+                        'tag' => 'div',
                         'class' => 'checkbox'
                     )
                 ),
-                array('Errors', array('class' => 'error padding-10px bg-danger text-danger'))
+                array('Errors', array('class' => 'alert alert-danger'))
             ),
             'label' => "Li e concordo com a Política de Privacidade e o Termo de Uso",
             'order' => 9
