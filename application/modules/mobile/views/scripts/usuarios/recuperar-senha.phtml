@@ -1,14 +1,7 @@
-<div class="row margin-10px">    
-    <div class="col-lg-12">    
-        <?php echo View_Helper_Messages::render($this->messages); ?>       
-        <div class="panel panel-info">
-            <div class="panel-heading">Recuperar a senha</div>
-            <div class="panel-body">            
-                <div class="col-lg-5">
-                    <?php echo $this->formSiteRecuperarSenha; ?>
-                </div>
-                <div class="col-lg-7"></div>
-            </div>
-        </div>
+<?php echo View_Helper_Messages::render($this->messages); ?>
+<div class="row">        
+    <div class="col-lg-12">                           
+        <h4 class="text-info">Recuperar a senha</h4>            
+        <?php echo $this->formSiteRecuperarSenha; ?>
     </div>
 </div>
