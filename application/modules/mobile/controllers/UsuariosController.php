@@ -42,7 +42,7 @@ class Mobile_UsuariosController extends Zend_Controller_Action {
                 } else {         
                     $this->view->messages = array(
                         array(
-                            'class' => "alert alert-danger",
+                            'class' => "bg-danger text-danger padding-10px margin-10px-0px",
                             'message' => "Usuário e/ou senha iválidos!"
                         )
                     );

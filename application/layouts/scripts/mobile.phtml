@@ -43,7 +43,7 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav text-primary">
                         <li><a href="<?php echo $this->url(array(
                                 'module' => 'mobile',
                                 'controller' => 'index',
@@ -57,11 +57,13 @@
                         ), null, true); ?>"><span class="glyphicon glyphicon-user"></span> Faça Contato</a></li>                             
                     </ul>                    
                     <div class="navbar-form navbar-right">
+                        <!--
                         <a class="btn btn-sm btn-success" href="<?php echo $this->url(array(
                                 'module' => 'mobile',
                                 'controller' => 'cadastro-usuario',
                                 'action' => 'index'
                         ), null, true); ?>"><span class="glyphicon glyphicon-new-window"></span> Cadastre-se</a>
+                        -->
                         <a class="btn btn-sm btn-info" href="<?php echo $this->url(array(
                                 'module' => 'mobile',
                                 'controller' => 'usuarios',
@@ -90,29 +92,21 @@
             </div>
         </div>
         
-        <footer>   
-            <div class="background-color-orange">
-                <div class="container container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12 small text-center text-white">contato@newfinances.com.br</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 text-center" style="padding: 10px;">
-                            <a class="img redes-sociais" href="https://www.facebook.com/sisnewfinances" target="_blank">
-                                <img class="redes-sociais img-circle" src="<?php echo $this->baseUrl('views/img/icon_face_social.png'); ?>" />
-                            </a>
-                            <a class="img redes-sociais" href="https://twitter.com/NewFinances" target="_blank">
-                                <img class="redes-sociais" src="<?php echo $this->baseUrl('views/img/icon_twitter_social.png'); ?>" />
-                            </a>
-                            <a class="img redes-sociais" href="https://plus.google.com/104418631172971802903/posts" target="_blank">
-                                <img class="redes-sociais" src="<?php echo $this->baseUrl('views/img/icon_google_plus_social.png'); ?>" />
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 small text-center text-white">Copyright NewFinances. Todos os direitos reservados</div>
-                    </div>
-                </div>        
+        <footer class="background-color-orange">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a class="redes-sociais" href="https://www.facebook.com/sisnewfinances" target="_blank">
+                            <img class="img-rounded margin-10px" src="<?php echo $this->baseUrl('views/img/icon_face_social2.png'); ?>" />
+                        </a>
+                        <a class="redes-sociais" href="https://twitter.com/NewFinances" target="_blank">
+                            <img class="img-rounded margin-10px" src="<?php echo $this->baseUrl('views/img/icon_twitter_social2.png'); ?>" />
+                        </a>
+                        <a class="redes-sociais" href="https://plus.google.com/104418631172971802903/posts" target="_blank">
+                            <img class="img-rounded margin-10px" src="<?php echo $this->baseUrl('views/img/icon_google_plus_social2.png'); ?>" />
+                        </a>
+                    </div>                                                                          
+                </div>   
             </div>            
         </footer>
         <!-- /container -->
