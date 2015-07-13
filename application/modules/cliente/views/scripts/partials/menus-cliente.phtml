@@ -24,6 +24,111 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">                    
+            <!--<li class="active"><a href="<?php
+                echo $this->url(array(
+                    'module' => 'cliente',
+                    'controller' => 'index',
+                    'action' => 'index'
+                ), null, true);
+                ?>"><span class="glyphicon glyphicon-home"></span> Início</a></li>-->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-share"></span> Lançamentos <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php echo $this->url(array(
+                        'module' => 'cliente',
+                        'controller' => 'movimentacoes',
+                        'action' => 'nova-receita'
+                    ), null, true); ?>"><span class="glyphicon glyphicon-arrow-right"></span> Nova Receita</a></li>
+                    <li><a href="<?php echo $this->url(array(
+                        'module' => 'cliente',
+                        'controller' => 'movimentacoes',
+                        'action' => 'nova-despesa'
+                    ), null, true); ?>"><span class="glyphicon glyphicon-arrow-left"></span> Nova Despesa</a></li>
+                    <li><a href="<?php echo $this->url(array(
+                        'module' => 'cliente',
+                        'controller' => 'movimentacoes',
+                        'action' => 'transferencia'
+                    ), null, true); ?>"><span class="glyphicon glyphicon-transfer"></span> Transferência</a></li>
+                </ul>
+            </li>
+            <!--
+            <li class="active"><a href="<?php echo $this->url(array(
+                'module' => 'cliente',
+                'controller' => 'orcamentos',
+                'action' => 'index'
+            ), null, true); ?>"><span class="glyphicon glyphicon-list-alt"></span> Orçamentos</a></li>
+            <!--
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"></span> Relatórios <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php echo $this->url(array()); ?>">Anual</a></li>
+                </ul>
+            </li>
+            -->
+            <!--
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-credit-card"></span> Contas/Cartão <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php echo $this->url(array(
+                        'module' => 'cliente',
+                        'controller' => 'contas',
+                        'action' => 'index'
+                    ), null, true); ?>"><span class="glyphicon glyphicon-list"></span> Minhas Contas</a></li>
+                    <li><a href="<?php echo $this->url(array(
+                        'module' => 'cliente',
+                        'controller' => 'contas',
+                        'action' => 'nova-conta'
+                    ), null, true); ?>"><span class="glyphicon glyphicon-record"></span> Nova Conta</a></li>
+                    <li class="divider"></li>
+                    <li><a href="<?php echo $this->url(array(
+                        'module' => 'cliente',
+                        'controller' => 'cartoes',
+                        'action' => 'index'
+                    ), null, true); ?>"><span class="glyphicon glyphicon-list"></span> Meus Cartões</a></li>
+                    <li><a href="<?php echo $this->url(array(
+                        'module' => 'cliente',
+                        'controller' => 'cartoes',
+                        'action' => 'novo-cartao'
+                    ), null, true); ?>"><span class="glyphicon glyphicon-record"></span> Novo Cartão</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="<?php echo $this->url(array(
+                'module' => 'cliente',
+                'controller' => 'chamados',
+                'action' => 'index'
+            ), null, true); ?>"><span class="glyphicon glyphicon-comment"></span> Meus Chamados</a></li>
             
+            <li class="active"><a href="<?php echo $this->url(array(
+                'module' => 'cliente',
+                'controller' => 'chamados',
+                'action' => 'index'
+            ), null, true); ?>"><span class="glyphicon glyphicon-pencil"></span> FAQ</a></li>
+            -->
+        </ul>               
+        <ul class="nav navbar-nav navbar-right">        
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">                
+                    <span class="glyphicon glyphicon-user"></span> <?php echo $short_name; ?> <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php
+                        echo $this->url(array(
+                            'module' => 'cliente',
+                            'controller' => 'meusdados',
+                            'action' => 'index'
+                        ), null, true);
+                        ?>"><span class="glyphicon glyphicon-cog"></span> Configurações</a></li>                    
+                    <li class="divider"></li>
+                    <li><a href="<?php
+                        echo $this->url(array(
+                            'module' => 'cliente',
+                            'controller' => 'usuarios',
+                            'action' => 'logout'
+                        ), null, true);
+                        ?>"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
+                </ul>
+            </li>
+        </ul>        
         </div>
     </div>

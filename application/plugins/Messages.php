@@ -48,7 +48,7 @@ class Plugin_Messages extends Zend_Controller_Plugin_Abstract {
             $flashMessenger = Zend_Controller_Action_HelperBroker::getExistingHelper('viewRenderer')->view;
             $flashMessenger->alerts = array(
                 array(
-                    'class' => 'alert alert-warning small',
+                    'class' => 'alert alert-warning',
                     'message' => "Você possui {$count} pendências! <a class='text-info' href='{$url_pendencias}'>Ver Pendências</a>"
                 )
             );
