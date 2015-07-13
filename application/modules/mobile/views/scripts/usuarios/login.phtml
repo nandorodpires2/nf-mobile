@@ -8,7 +8,12 @@
             'module' => 'mobile',
             'controller' => 'usuarios',
             'action' => 'recuperar-senha'
-        ), null, true); ?>" class="text-info small">Recuperar a senha</a>        
+        ), null, true); ?>" class="text-info small">Recuperar a senha</a> | 
+        <a href="<?php echo $this->url(array(
+            'module' => 'mobile',
+            'controller' => 'cadastro-usuario',
+            'action' => 'index'
+        ), null, true); ?>" class="text-success small">Ainda não tenho cadastro</a> 
     </div>
 </div>
 

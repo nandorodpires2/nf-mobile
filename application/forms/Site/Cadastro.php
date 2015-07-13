@@ -164,18 +164,22 @@ class Form_Site_Cadastro extends Zend_Form {
                     'Label', array(
                         'tag' => 'div',
                         'class' => 'small control-label',
-                        'placement' => 'APPEND'
+                        'placement' => 'APPEND',
+                        'escape' => false
                     )
                 ),
                 array(
                     'HtmlTag', array(
                         'tag' => 'div',
-                        'class' => 'checkbox'
+                        'class' => 'checkbox',                        
                     )
                 ),
                 array('Errors', array('class' => 'alert alert-danger'))
             ),
-            'label' => "Li e concordo com a Política de Privacidade e o Termo de Uso",
+            'label' => " 
+                <span>Li e concordo com a Política de Privacidade e o Termo de Uso</span> 
+                <a href='' data-toggle='modal' data-target='#modalTermoPrivacidade'>leia aqui</a>
+            ",
             'order' => 9
         ));
         

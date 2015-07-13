@@ -43,7 +43,7 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav text-primary">
                         <li><a href="<?php echo $this->url(array(
                                 'module' => 'mobile',
                                 'controller' => 'index',
@@ -57,11 +57,13 @@
                         ), null, true); ?>"><span class="glyphicon glyphicon-user"></span> Faça Contato</a></li>                             
                     </ul>                    
                     <div class="navbar-form navbar-right">
+                        <!--
                         <a class="btn btn-sm btn-success" href="<?php echo $this->url(array(
                                 'module' => 'mobile',
                                 'controller' => 'cadastro-usuario',
                                 'action' => 'index'
                         ), null, true); ?>"><span class="glyphicon glyphicon-new-window"></span> Cadastre-se</a>
+                        -->
                         <a class="btn btn-sm btn-info" href="<?php echo $this->url(array(
                                 'module' => 'mobile',
                                 'controller' => 'usuarios',
